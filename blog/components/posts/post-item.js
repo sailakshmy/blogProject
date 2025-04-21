@@ -12,11 +12,18 @@ const PostItem = ({ post }) => {
   });
   const imagePath = `/images/posts/${slug}/${image}`;
   const imageAlt = `Image for ${title}`;
+  const postPath = `/posts/${slug}`;
   return (
     <li className={styles.post}>
-      <Link>
+      <Link href={postPath}>
         <div className={styles.image}>
-          <Image src={imagePath} alt={imageAlt} width={300} height={200} />
+          <Image
+            src={imagePath}
+            alt={imageAlt}
+            width={300}
+            height={200}
+            layout="responsive"
+          />
         </div>
         <div className={styles.content}>
           <h3>{title}</h3>

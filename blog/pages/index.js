@@ -1,5 +1,6 @@
 import FeaturedPosts from "@/components/home-page/featured-posts";
 import Hero from "@/components/home-page/hero";
+import { getAllFeaturedPosts } from "@/lib/posts-util";
 import React from "react";
 
 const DUMMY_POSTS = [
@@ -45,13 +46,22 @@ const DUMMY_POSTS = [
   },
 ];
 
-const Homepage = () => {
+const Homepage = ({ posts }) => {
   return (
     <div>
       <Hero />
-      <FeaturedPosts posts={DUMMY_POSTS} />
+      <FeaturedPosts posts={posts} />
     </div>
   );
 };
 
 export default Homepage;
+
+export function getStaticProps() {
+  const featuredPosts = getAllFeaturedPosts();
+  return {
+    props: {
+      posts: featuredPosts,
+    },
+  };
+}
